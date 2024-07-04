@@ -7,6 +7,7 @@ import EventRegistrationForm from "views/Dashboard/Dashboard/components/EventReg
 import WorkWithTheRockets from "views/Dashboard/Dashboard/components/WorkWithTheRockets";
 import peopleImage from "assets/img/people-image.png";
 import logoChakra from "assets/svg/logo-white.svg";
+import { Ticket } from "../components/Ticket";
 
 function EventForm() {
   const params = useParams();
@@ -55,12 +56,13 @@ function EventForm() {
           onDrop={onDrop}
           image={image}
         />
-        <WorkWithTheRockets
+        {/* <WorkWithTheRockets
           backgroundImage={peopleImage}
           title={"Detalhes do Evento"}
           eventDetails={eventDetails}
           image={image}
-        />
+        /> */}
+        <Ticket />
       </Grid>
     </Flex>
   );
