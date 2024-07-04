@@ -15,6 +15,9 @@ function EventForm() {
     eventLocation: "",
     eventDateTime: "",
     maxCapacity: "",
+    cabin: "",
+    runway: "",
+    premiumRunway: "",
   });
 
   const [image, setImage] = useState(null);

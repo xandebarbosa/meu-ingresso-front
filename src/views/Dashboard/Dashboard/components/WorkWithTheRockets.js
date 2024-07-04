@@ -55,6 +55,16 @@ const WorkWithTheRockets = ({ title, eventDetails, image }) => {
               {title}
             </Text>
             <Box>
+              {image && (
+                <Image
+                  boxSize="200px"
+                  borderRadius="15px"
+                  src={image}
+                  alt="Event Image"
+                  mt="4"
+                  mb="4"
+                />
+              )}
               <Text>
                 <strong>Nome do Evento:</strong> {eventDetails.eventName}
               </Text>
@@ -68,9 +78,6 @@ const WorkWithTheRockets = ({ title, eventDetails, image }) => {
               <Text>
                 <strong>Lotação Máxima:</strong> {eventDetails.maxCapacity}
               </Text>
-              {image && (
-                <Image boxSize="200px" src={image} alt="Event Image" mt="4" />
-              )}
             </Box>
             <Spacer />
             <Flex align="center" mt={{ sm: "20px", lg: "40px", xl: "90px" }}>

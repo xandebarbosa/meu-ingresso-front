@@ -13,6 +13,7 @@ import {
   Text,
   useColorModeValue,
   Image,
+  Divider,
 } from "@chakra-ui/react";
 // Custom components
 import Card from "components/Card/Card.js";
@@ -53,7 +54,7 @@ const EventRegistrationForm = ({
               </Heading>
               <Input
                 variant="outline"
-                width={500}
+                width={400}
                 placeholder="nome do evento"
                 name="eventName"
                 value={eventDetails.eventName}
@@ -61,7 +62,7 @@ const EventRegistrationForm = ({
               />
               <Input
                 variant="outline"
-                width={500}
+                width={400}
                 placeholder="Local do evento"
                 name="eventLocation"
                 value={eventDetails.eventLocation}
@@ -87,6 +88,43 @@ const EventRegistrationForm = ({
                 value={eventDetails.maxCapacity}
                 onChange={handleChange}
               />
+              <Divider orientation="horizontal" width="100%" />
+              <Text>
+                <strong>Tipos / Valores ingressos</strong>
+              </Text>
+              <InputGroup width={300}>
+                <InputLeftAddon>Camarote</InputLeftAddon>
+                <Input
+                  variant="outline"
+                  width={200}
+                  placeholder="Camarote"
+                  name="cabin"
+                  value={eventDetails.cabin}
+                  onChange={handleChange}
+                />
+              </InputGroup>
+              <InputGroup width={300}>
+                <InputLeftAddon>Pista Premium</InputLeftAddon>
+                <Input
+                  variant="outline"
+                  width={200}
+                  placeholder="Pista premium"
+                  name="cabin"
+                  value={eventDetails.premiumRunway}
+                  onChange={handleChange}
+                />
+              </InputGroup>
+              <InputGroup width={300}>
+                <InputLeftAddon>Pista</InputLeftAddon>
+                <Input
+                  variant="outline"
+                  width={230}
+                  placeholder="Pista"
+                  name="runway"
+                  value={eventDetails.runway}
+                  onChange={handleChange}
+                />
+              </InputGroup>
             </Stack>
             <Box
               {...getRootProps()}
