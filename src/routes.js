@@ -7,6 +7,7 @@ import SignIn from "views/Auth/SignIn.js";
 import SignUp from "views/Auth/SignUp.js";
 import Events from "views/Dashboard/Events";
 import EventForm from "views/Dashboard/Events/Form";
+import Tickets from "views/Dashboard/Tickets";
 
 import {
   HomeIcon,
@@ -60,6 +61,13 @@ var dashRoutes = [
     name: "Billing",
     icon: <CreditIcon color="inherit" />,
     component: Billing,
+    layout: "/admin",
+  },
+  {
+    path: "/tickets",
+    name: "Ingressos",
+    icon: <CreditIcon color="inherit" />,
+    component: Tickets,
     layout: "/admin",
   },
 

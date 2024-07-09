@@ -14,6 +14,7 @@ import {
   useColorModeValue,
   Image,
   Divider,
+  Textarea,
 } from "@chakra-ui/react";
 // Custom components
 import Card from "components/Card/Card.js";
@@ -22,6 +23,7 @@ import React, { useState } from "react";
 // react icons
 import { BsArrowRight } from "react-icons/bs";
 import { useDropzone } from "react-dropzone";
+import { Separator } from "components/Separator/Separator";
 
 const EventRegistrationForm = ({
   eventDetails,
@@ -38,7 +40,7 @@ const EventRegistrationForm = ({
   });
 
   return (
-    <Card minHeight="290.5px" p="2rem" my="4">
+    <Card minHeight="290.5px" p="2rem">
       <CardBody w="100%">
         <Flex flexDirection={{ sm: "column", lg: "row" }} w="100%">
           <Flex
@@ -69,17 +71,6 @@ const EventRegistrationForm = ({
                 onChange={handleChange}
               />
 
-              <InputGroup width={300}>
-                <InputLeftAddon>Data/Hora</InputLeftAddon>
-                <Input
-                  placeholder="Select Date and Time"
-                  size="md"
-                  type="datetime-local"
-                  name="eventDateTime"
-                  value={eventDetails.eventDateTime}
-                  onChange={handleChange}
-                />
-              </InputGroup>
               <Input
                 variant="outline"
                 width={200}
@@ -88,8 +79,51 @@ const EventRegistrationForm = ({
                 value={eventDetails.maxCapacity}
                 onChange={handleChange}
               />
-              <Divider orientation="horizontal" width="100%" />
-              <Text>
+
+              <Separator w="220%" />
+
+              <Text pt={15}>
+                <strong>Data / horários</strong>
+              </Text>
+              <InputGroup width={300}>
+                <InputLeftAddon>Data</InputLeftAddon>
+                <Input
+                  placeholder="Selecionar a data do evento"
+                  size="md"
+                  type="date"
+                  name="eventDate"
+                  value={eventDetails.eventDate}
+                  onChange={handleChange}
+                />
+              </InputGroup>
+
+              <InputGroup width={300}>
+                <InputLeftAddon>Horário inicío</InputLeftAddon>
+                <Input
+                  placeholder="Selecionar o horáio inicial"
+                  size="md"
+                  type="time"
+                  name="eventTimeStart"
+                  value={eventDetails.eventTimeStart}
+                  onChange={handleChange}
+                />
+              </InputGroup>
+
+              <InputGroup width={300}>
+                <InputLeftAddon>Horário termíno</InputLeftAddon>
+                <Input
+                  placeholder="Selecionar o horário final"
+                  size="md"
+                  type="time"
+                  name="eventTimeEnd"
+                  value={eventDetails.eventTimeEnd}
+                  onChange={handleChange}
+                />
+              </InputGroup>
+
+              <Separator w="220%" mt="5px" />
+
+              <Text pt={15}>
                 <strong>Tipos / Valores ingressos</strong>
               </Text>
               <InputGroup width={300}>
@@ -109,7 +143,7 @@ const EventRegistrationForm = ({
                   variant="outline"
                   width={200}
                   placeholder="Pista premium"
-                  name="cabin"
+                  name="premiumRunway"
                   value={eventDetails.premiumRunway}
                   onChange={handleChange}
                 />
@@ -125,7 +159,25 @@ const EventRegistrationForm = ({
                   onChange={handleChange}
                 />
               </InputGroup>
+
+              <Separator w="220%" mt="5px" />
+
+              <Text pt={15}>
+                <strong>Informações sobre o evento</strong>
+              </Text>
+              <Textarea
+                width={400}
+                minHeight={150}
+                placeholder="Digite informações sobre o evento"
+                name="comments"
+                value={eventDetails.comments}
+                onChange={handleChange}
+              />
             </Stack>
+
+            <Text pt={15}>
+              <strong>Imagem do evento do evento</strong>
+            </Text>
             <Box
               {...getRootProps()}
               p="2rem"

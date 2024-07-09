@@ -3,7 +3,7 @@ import { useDropzone } from "react-dropzone";
 import { useParams } from "react-router-dom";
 import { Flex } from "@chakra-ui/react";
 import { Grid, Image } from "@chakra-ui/react";
-import EventRegistrationForm from "views/Dashboard/Dashboard/components/EventRegistrationForm";
+import EventRegistrationForm from "views/Dashboard/Events/components/EventRegistrationForm";
 import WorkWithTheRockets from "views/Dashboard/Dashboard/components/WorkWithTheRockets";
 import peopleImage from "assets/img/people-image.png";
 import logoChakra from "assets/svg/logo-white.svg";
@@ -14,11 +14,14 @@ function EventForm() {
   const [eventDetails, setEventDetails] = useState({
     eventName: "",
     eventLocation: "",
-    eventDateTime: "",
+    eventDate: "",
+    eventTimeStart: "",
+    eventTimeEnd: "",
     maxCapacity: "",
     cabin: "",
     runway: "",
     premiumRunway: "",
+    comments: "",
   });
 
   const [image, setImage] = useState(null);
@@ -56,13 +59,8 @@ function EventForm() {
           onDrop={onDrop}
           image={image}
         />
-        {/* <WorkWithTheRockets
-          backgroundImage={peopleImage}
-          title={"Detalhes do Evento"}
-          eventDetails={eventDetails}
-          image={image}
-        /> */}
-        <Ticket />
+
+        <Ticket eventDetails={eventDetails} />
       </Grid>
     </Flex>
   );

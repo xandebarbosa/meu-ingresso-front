@@ -1,3 +1,4 @@
+import { Image } from "@chakra-ui/react";
 import Card from "components/Card/Card";
 
 const Avatar = () => {
@@ -47,7 +48,19 @@ const Text = ({ content, isTitle }) => {
   );
 };
 
-export const Ticket = () => {
+export const Ticket = ({ eventDetails, image }) => {
+  if (!eventDetails) {
+    return null; // ou uma mensagem de loading
+  }
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const year = date.getFullYear();
+    return `${day} - ${month} - ${year}`;
+  };
+
   return (
     <Card>
       <header
@@ -77,15 +90,44 @@ export const Ticket = () => {
         }}
       >
         <div>
-          <Text content="João da silva" isTitle />
+          {image && (
+            <Image
+              boxSize="200px"
+              borderRadius="15px"
+              src={image}
+              alt="Event Image"
+              mt="4"
+              mb="4"
+            />
+          )}
+        </div>
+        <div>
+          <Text content={eventDetails.eventName} isTitle />
           <QRcode />
-          <Text content="Rock in Rio" />
-          <Text content="Camarote" />
         </div>
 
         <div>
-          <Text content="22 setembro 2024 - 19:00 às 20:00" />
-          <Text content="Praia de copacabana" />
+          <Text content={eventDetails.maxCapacity} />
+          <Text content={eventDetails.cabin} />
+          <Text content={eventDetails.premiumRunway} />
+          <Text content={eventDetails.runway} />
+        </div>
+
+        <div>
+          <Text content={eventDetails.comments} />
+        </div>
+
+        <div>
+          <Text content={formatDate(eventDetails.eventDate)} />
+          <Text
+            content={
+              "Horário de inicío: " +
+              eventDetails.eventTimeStart +
+              " - Horário Final: " +
+              eventDetails.eventTimeEnd
+            }
+          />
+          <Text content={eventDetails.eventLocation} />
         </div>
       </main>
     </Card>
